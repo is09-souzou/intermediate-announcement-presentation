@@ -11,9 +11,11 @@
     <div class="animation-paper-3 main-content">
       <div>
         <font-cormorant class="service-name-wrapper">
-            <h1>SOUZOU</h1>
+          <h1>SOUZOU</h1>
         </font-cormorant>
-        <p>中間発表</p>
+        <font-noto-serif>
+          <p>中間発表</p>
+        </font-noto-serif>
       </div>
     </div>
   </div>
@@ -22,6 +24,7 @@
 <script>
 import MicrophoneOutlineIcon from "vue-material-design-icons/MicrophoneOutline";
 import FontCormorant from "@/components/font/FontCormorant";
+import FontNotoSerif from "@/components/font/FontNotoSerif";
 
 export default {
   name: "TopSection",
@@ -32,6 +35,7 @@ export default {
   components: {
     MicrophoneOutlineIcon,
     FontCormorant,
+    FontNotoSerif,
   },
   methods: {
     start: function () {
@@ -67,14 +71,37 @@ export default {
   align-items: center;
   box-shadow: 0px 0px 11px 4px rgba(0,0,0,0.5);
   transition: all .4s cubic-bezier(1, -1.84, 0.68, 1.74);
-  border: 0px solid #ff9100;
-  z-index: 1000;
+  border: 2px solid #ff9100;
+  position: relative;
 }
 
 .start-button:hover {
   width: 8rem;
   height: 8rem;
   border: 8px solid #ff9100;
+}
+
+.start-button::after {
+  content: "";
+  background-color: rgba(0, 0, 0, .2);
+  border-radius: 50%;
+  width: 11rem;
+  height: 11rem;
+  position: absolute;
+  z-index: -1;
+  top: -1.5rem;
+  animation-name: Balloon;
+  animation-iteration-count: infinite;
+  animation-duration: .8s;
+  animation-timing-function: ease-in-out;
+  animation-direction: alternate;
+  transition: all .8s ease-in-out;
+  opacity: 1;
+}
+.start-button:hover::after {
+  transform: scale(0.5, 0.5) !important;
+  animation-name: none;
+  opacity: 0;
 }
 
 .top-section.start .start-button {
@@ -111,16 +138,15 @@ export default {
 .animation-paper-2,
 .animation-paper-3 {
   border-radius: 24px;
-  height: calc(100vh - 8px);
-  width:  calc(100vw - 8px);
+  height: calc(100vh + 32px);
+  width:  calc(100vw + 32px);
   position: absolute;
-  right: 0;
+  top: -16px;
   transform-origin: right bottom;
   transform: rotate(45deg);
   opacity: 0;
   bottom: 128px;
   box-shadow: 0 2px 11px 2px rgba(0,0,0,0.3);
-  margin: 4px;
 }
 
 .animation-paper-1 {
@@ -174,8 +200,8 @@ export default {
 }
 
 .start.top-section .service-name-wrapper {
-  animation-delay           : 5s;
-  animation-duration        : 1s;
+  animation-delay           : 4.5s;
+  animation-duration        : .6s;
   animation-name            : ViewText1;
   animation-timing-function : ease-in-out;
   animation-fill-mode       : forwards;
@@ -194,7 +220,6 @@ export default {
   font-size: 2.5rem;
   letter-spacing: .5rem;
   margin: 0;
-  margin-top: 1rem;
   white-space: nowrap;
   opacity: 0;
   position: relative;
@@ -202,11 +227,20 @@ export default {
 }
 
 .start.top-section .main-content p {
-  animation-delay: 6s;
-  animation-duration: 1s;
+  animation-delay: 5.3s;
+  animation-duration: .8s;
   animation-name: ViewText2;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
+}
+
+@keyframes Balloon {
+  from {
+    transform: scale(1, 1);
+  }
+  to {
+    transform: scale(.95, .95);
+  }
 }
 
 @keyframes Rotate {
