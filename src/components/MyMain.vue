@@ -22,7 +22,7 @@
         </div>
       </div>
     </section>
-    <presentator-section :view="this.step === 2"></presentator-section>
+    <presentator-section :view="this.step === 2 || tihs.step === 3"></presentator-section>
     <div class="next-button" v-on:click="next()"></div>
   </main>
 </template>
