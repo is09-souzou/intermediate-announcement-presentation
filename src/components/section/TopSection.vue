@@ -150,7 +150,7 @@ export default {
 .start.top-section .animation-paper-3 {
   background-color: #FAFBFD;
   animation-delay           : 2.5s;
-  animation-duration        : 1.6s;
+  animation-duration        : 1.8s;
   animation-name            : RollIn;
   animation-timing-function : ease-in-out;
   animation-fill-mode       : forwards;
@@ -176,7 +176,7 @@ export default {
 .start.top-section .service-name-wrapper {
   animation-delay           : 5s;
   animation-duration        : 1s;
-  animation-name            : ViewTitle;
+  animation-name            : ViewText1;
   animation-timing-function : ease-in-out;
   animation-fill-mode       : forwards;
 }
@@ -186,20 +186,27 @@ export default {
   line-height: 7rem;
   margin: 1rem 0;
   white-space: nowrap;
-}
-
-.start.top-section .service-name-wrapper > h1 {
   font-size: 8rem;
   letter-spacing: 1rem;
-  animation-name            : RollIn;
-  animation-timing-function : ease-in-out;
-  animation-fill-mode       : forwards;
 }
 
-.service-name-wrapper > p {
-  font-size: 4rem;
+.main-content p {
+  font-size: 2.5rem;
+  letter-spacing: .5rem;
   margin: 0;
+  margin-top: 1rem;
   white-space: nowrap;
+  opacity: 0;
+  position: relative;
+  padding-bottom: .8rem;
+}
+
+.start.top-section .main-content p {
+  animation-delay: 6s;
+  animation-duration: 1s;
+  animation-name: ViewText2;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
 }
 
 @keyframes Rotate {
@@ -237,9 +244,23 @@ export default {
   }
 }
 
-@keyframes ViewTitle {
+@keyframes ViewText1 {
+  from {
+    max-width: 0px;
+  }
   to {
     max-width: 100%;
+  }
+}
+
+@keyframes ViewText2 {
+  from {
+    bottom: .8rem;
+    opacity: 0;
+  }
+  to {
+    bottom: 0;
+    opacity: 1;
   }
 }
 
