@@ -51,5 +51,6 @@ module.exports = {
     'object-shorthand': 0,
     'func-names': 0,
     'quotes': ["error", "double"],
+    'max-len': 0
   }
 }
