@@ -92,7 +92,7 @@ export default {
 }
 
 .presentator-section[view] .avatar-wrapper {
-  animation-delay: 1.3s;
+  animation-delay: 1s;
   animation-name: ViewAvatar, Balloon;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
@@ -119,6 +119,7 @@ export default {
   display: flex;
   flex-direction: column;
   margin: 0 4rem;
+  position: relative;
 }
 
 .info > :first-child {
@@ -126,11 +127,34 @@ export default {
   font-size: 2rem;
   text-align: left;
   margin: 0;
+  opacity: 0;
+  bottom: .8rem;
+  position: relative;
 }
 
 .info > :last-child {
   color: white;
+  margin: 0;
   font-size: 5rem;
+  opacity: 0;
+  bottom: .8rem;
+  position: relative;
+}
+
+.presentator-section[view] .info > :first-child,
+.presentator-section[view] .info > :last-child {
+  animation-duration: .4s;
+  animation-name: ViewText2;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+.presentator-section[view] .info > :first-child {
+  animation-delay: 1.5s;
+}
+
+.presentator-section[view] .info > :last-child {
+  animation-delay: 2s;
 }
 
 @keyframes SpreadSlash {
@@ -170,6 +194,17 @@ export default {
   }
   to {
     transform: scale(.95, .95);
+  }
+}
+
+@keyframes ViewText2 {
+  from {
+    bottom: .8rem;
+    opacity: 0;
+  }
+  to {
+    bottom: 0;
+    opacity: 1;
   }
 }
 </style>

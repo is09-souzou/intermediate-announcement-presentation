@@ -23,6 +23,10 @@
       </div>
     </section>
     <presentator-section :view="this.step === 2 || this.step === 3"></presentator-section>
+    <team-section :view="this.step === 3 || this.step === 4"></team-section>
+    <member-section :view="this.step === 4 || this.step === 5"></member-section>
+    <service-top-section :view="this.step === 5 || this.step === 6"></service-top-section>
+    <div class="prev-button" v-on:click="prev()"></div>
     <div class="next-button" v-on:click="next()"></div>
   </main>
 </template>
@@ -31,7 +35,10 @@
 import MicrophoneOutlineIcon from "vue-material-design-icons/MicrophoneOutline";
 import FontCormorant from "@/components/font/FontCormorant";
 import FontNotoSerif from "@/components/font/FontNotoSerif";
+import MemberSection from "@/components/section/MemberSection";
 import PresentatorSection from "@/components/section/PresentatorSection";
+import ServiceTopSection from "@/components/section/ServiceTopSection";
+import TeamSection from "@/components/section/TeamSection";
 
 export default {
   name: "MyMain",
@@ -45,7 +52,10 @@ export default {
     MicrophoneOutlineIcon,
     FontCormorant,
     FontNotoSerif,
+    MemberSection,
     PresentatorSection,
+    ServiceTopSection,
+    TeamSection,
   },
   methods: {
     start: function () {
@@ -67,6 +77,13 @@ export default {
           },
           2000,
         );
+        console.log(this.step);
+      }
+    },
+    prev: function () {
+      if (this.step !== 1) {
+        this.step = this.step - 1;
+        console.log(this.step);
       }
     },
   },
@@ -79,6 +96,24 @@ export default {
 
 <style scoped>
 
+.color-list {
+  background-color: #FF1744;
+  background-color: #F50057;
+  background-color: #D500F9;
+  background-color: #651FFF;
+  background-color: #3D5AFE;
+  background-color: #2979FF;
+  background-color: #00B0FF;
+  background-color: #00E5FF;
+  background-color: #1DE9B6;
+  background-color: #00E676;
+  background-color: #76FF03;
+  background-color: #C6FF00;
+  background-color: #FFEA00;
+  background-color: #FFC400;
+  background-color: #FF9100;
+  background-color: #FF3D00;
+}
 .main {
   display: flex;
   flex-direction: column;
@@ -126,6 +161,38 @@ export default {
   right: 0;
   bottom: 0;
   transform-origin: right bottom;
+  background-color: #aaa;
+}
+
+.main[class*=step] .prev-button {
+  opacity: 1;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.prev-button {
+  display: flex;
+  width: 136px;
+  height: 32px;
+  border-bottom: 1px solid #aaa;
+  opacity: 0;
+  position: absolute;
+  bottom: 32px;
+  left: 32px;
+  transition: all .3s ease-in-out;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.prev-button::after {
+  content: "";
+  position: absolute;
+  height: 1px;
+  transform: rotate(-50deg);
+  width: 26px;
+  left: 0;
+  bottom: 0;
+  transform-origin: left bottom;
   background-color: #aaa;
 }
 
