@@ -26,6 +26,7 @@
     <team-section :view="this.step === 3 || this.step === 4"></team-section>
     <member-section :view="this.step === 4 || this.step === 5"></member-section>
     <service-top-section :view="this.step === 5 || this.step === 6"></service-top-section>
+    <demo-section :view="this.step === 6 || this.step === 7"></demo-section>
     <div class="prev-button" v-on:click="prev()"></div>
     <div class="next-button" v-on:click="next()"></div>
   </main>
@@ -35,6 +36,7 @@
 import MicrophoneOutlineIcon from "vue-material-design-icons/MicrophoneOutline";
 import FontCormorant from "@/components/font/FontCormorant";
 import FontNotoSerif from "@/components/font/FontNotoSerif";
+import DemoSection from "@/components/section/DemoSection";
 import MemberSection from "@/components/section/MemberSection";
 import PresentatorSection from "@/components/section/PresentatorSection";
 import ServiceTopSection from "@/components/section/ServiceTopSection";
@@ -52,6 +54,7 @@ export default {
     MicrophoneOutlineIcon,
     FontCormorant,
     FontNotoSerif,
+    DemoSection,
     MemberSection,
     PresentatorSection,
     ServiceTopSection,
@@ -77,7 +80,7 @@ export default {
           },
           2000,
         );
-        console.log(this.step);
+        console.log(`Current Step: ${this.step}`);
       }
     },
     prev: function () {
@@ -114,6 +117,7 @@ export default {
   background-color: #FF9100;
   background-color: #FF3D00;
 }
+
 .main {
   display: flex;
   flex-direction: column;
@@ -238,6 +242,10 @@ export default {
 .start-button:hover::after {
   transform: scale(0.5, 0.5) !important;
   animation-name: none;
+  opacity: 0;
+}
+
+.main.start .start-button::after {
   opacity: 0;
 }
 

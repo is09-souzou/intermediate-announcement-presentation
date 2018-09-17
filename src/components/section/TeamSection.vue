@@ -13,7 +13,7 @@
         <h1>Our Mission</h1>
       </font-cormorant>
       <p>
-        すべてのクリエイターの活躍を手助けする.
+        すべてのクリエイターの活躍を手助けする。
       </p>
     </div>
   </section>
