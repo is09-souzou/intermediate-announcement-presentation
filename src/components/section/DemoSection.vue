@@ -7,15 +7,20 @@
       <div class="balloon"></div>
       <div class="balloon"></div>
     </div>
-    <font-cormorant>
-      <h1>DEMO</h1>
-    </font-cormorant>
+    <div class="content">
+      <font-cormorant>
+        <h1>DEMO</h1>
+      </font-cormorant>
+      <my-image :src="ServiceQR"></my-image>
+      <p>https://bit.ly/2NfdNU4</p>
+    </div>
   </section>
 </template>
 
 <script>
 import MyImage from "@/components/MyImage";
 import FontCormorant from "@/components/font/FontCormorant";
+import ServiceQR from "@/assets/service-qr.png";
 
 export default {
   name: "DemoSection",
@@ -24,6 +29,7 @@ export default {
     FontCormorant,
   },
   data: () => ({
+    ServiceQR,
   }),
   methods: {
   },
@@ -121,6 +127,45 @@ export default {
   animation-name: MainBalloon;
 }
 
+.demo-section .content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: absolute;
+  min-width: 100vw;
+  min-height: 100vh;
+}
+
+.demo-section .content > :nth-child(1) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 0px;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.demo-section[view] .content > :nth-child(1) {
+  animation-delay           : 2s;
+  animation-duration        : .6s;
+  animation-name            : ViewText1;
+  animation-timing-function : ease-in-out;
+  animation-fill-mode       : forwards;
+}
+
+.demo-section .content > :nth-child(1) h1 {
+  border-bottom: 1px solid white;
+  line-height: 7rem;
+  margin: 1rem 0;
+  white-space: nowrap;
+  font-size: 8rem;
+  letter-spacing: 2rem;
+  margin-right: -2rem;
+  color: white;
+}
+
 .demo-section > :nth-child(2) {
   display: flex;
   flex-direction: column;
@@ -131,23 +176,34 @@ export default {
   position: absolute;
 }
 
-.demo-section[view] > :nth-child(2) {
-  animation-delay           : 2s;
+.demo-section .content > :nth-child(2) {
+  height: 0;
+}
+
+.demo-section[view] .content > :nth-child(2) {
+  animation-delay           : 2.3s;
   animation-duration        : .6s;
-  animation-name            : ViewText1;
+  animation-name            : ViewImage;
   animation-timing-function : ease-in-out;
   animation-fill-mode       : forwards;
 }
 
-.demo-section > :nth-child(2) h1 {
-  border-bottom: 1px solid white;
-  line-height: 7rem;
-  margin: 1rem 0;
+.demo-section .content > :nth-child(3) {
+  font-size: 2.5rem;
+  letter-spacing: .5rem;
+  margin: 0;
   white-space: nowrap;
-  font-size: 8rem;
-  letter-spacing: 2rem;
-  margin-right: -2rem;
-  color: white;
+  opacity: 0;
+  position: relative;
+  padding-bottom: .8rem;
+}
+
+.demo-section[view] .content > :nth-child(3) {
+  animation-delay           : 3.5s;
+  animation-duration        : 1s;
+  animation-name            : ViewText2;
+  animation-timing-function : ease-in-out;
+  animation-fill-mode       : forwards;
 }
 
 @keyframes Balloon {
@@ -174,6 +230,26 @@ export default {
   }
   to {
     max-width: 100%;
+  }
+}
+
+@keyframes ViewText2 {
+  from {
+    bottom: .8rem;
+    opacity: 0;
+  }
+  to {
+    bottom: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes ViewImage {
+  from {
+    height: 0;
+  }
+  to {
+    height: 30rem;
   }
 }
 </style>
