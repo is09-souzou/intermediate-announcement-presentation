@@ -13,9 +13,11 @@
     "postinstall": "node build/build.js"
   },
   "dependencies": {
-    "express": "^4.16.3",
+    "chart.js": "^2.7.2",
     "compression": "^1.7.3",
+    "express": "^4.16.3",
     "vue": "^2.5.2",
+    "vue-chartjs": "^3.4.0",
     "vue-material-design-icons": "^2.1.1",
     "vue-router": "^3.0.1"
   },
