@@ -1,5 +1,5 @@
 <template>
-  <section class="develop-concept-section">
+  <section class="develop-concept-section" :view="view">
     <div class="animation-slash-list">
       <div
         class="slash"
@@ -8,7 +8,7 @@
         :key="n"
       ></div>
     </div>
-    <div class="content">
+    <div :class="['content'].concat([this.viewDetail ? 'detail' : '']).join(' ')">
       <font-cormorant>
         <h1>Develop Concept</h1>
       </font-cormorant>
@@ -26,6 +26,13 @@
           <div></div>
         </li>
       </ul>
+      <div class="detail-button" v-on:click="detailButton()"></div>
+      <div class="detail-content">
+        <div class="widget">
+          <h3>アジャイル</h3>
+          <p>アジャイル開発手法の一つ、スケジュール、タスク、MTG日程を管理</p>
+        </div>
+      </div>
     </div>
   </section>
 </template>
@@ -43,8 +50,20 @@ export default {
     FontNotoSerif,
   },
   data: () => ({
+    viewDetail: false,
   }),
+  props: ["view"],
   methods: {
+    detailButton: function () {
+      this.viewDetail = !this.viewDetail;
+    },
+  },
+  watch: {
+    view: function (next, prev) {
+      if (!prev && next) {
+        this.viewDetail = false;
+      }
+    },
   },
   mounted() {
   },
@@ -103,6 +122,9 @@ export default {
   z-index: 11;
   padding: 4rem;
   font-size: 4rem;
+  position: relative;
+  top: 0;
+  transition: top .5s ease-in-out;
 }
 
 .content h1 {
@@ -116,15 +138,6 @@ export default {
   position: relative;
   border-bottom: 1px solid #fff;
   line-height: 5rem;
-}
-
-.content > p {
-  color: white;
-  display: block;
-  margin-top: 4rem;
-  opacity: 0;
-  bottom: .8rem;
-  position: relative;
 }
 
 .develop-concept-section[view] .content h1 {
@@ -208,13 +221,13 @@ export default {
 }
 
 .develop-concept-section[view] .AnimationWiden:nth-child(3) > :not(:last-child) {
-  animation: 0s visibility 2.3s;
+  animation: 0s visibility 2.0s;
   animation-fill-mode: forwards;
 }
 
 .develop-concept-section[view] .AnimationWiden:nth-child(3) > :last-child {
-  animation: .4s height 1.5s ease-in-out,
-             .8s width 1.9s ease-in-out;
+  animation: .4s height 1.2s ease-in-out,
+             .8s width 1.6s ease-in-out;
   animation-fill-mode: forwards;
 }
 
@@ -234,5 +247,78 @@ export default {
   100% {
     left: 100%;
   }
+}
+
+.detail-button {
+  width: 4rem;
+  height: 4rem;
+  border-right: 2px solid white;
+  border-bottom: 2px solid white;
+  transform: rotate(45deg);
+  align-self: center;
+  margin-top: -2rem;
+  cursor: pointer;
+  transition: transform .3s ease 0s, top .3s ease 0s;
+  position: relative;
+  top: 0;
+  opacity: 0;
+}
+.detail-button:hover {
+  top: .4rem !important;
+}
+.develop-concept-section[view] .detail-button {
+  animation-delay: 2.3s;
+  animation-duration: .4s;
+  animation-name: ViewButton;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+.detail-button::after {
+  content: "more";
+  position: relative;
+  color: white;
+  font-size: 1.5rem;
+  transform: rotate(-45deg);
+  top: -1.5rem;
+  right: 0rem;
+  display: inline-block;
+}
+
+.detail .detail-button {
+  transform: rotate(225deg);
+}
+.detail .detail-button::after {
+  content: "back";
+  transform: rotate(135deg);
+}
+
+.detail {
+  top: -68vh;
+}
+
+
+@keyframes ViewButton {
+  from {
+    top: -.8rem;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+.detail-content {
+  position: absolute;
+  top: 100vh;
+  left: 0;
+  height: 70vh;
+  width: 100vw;
+  transition: top .5s ease-in-out;
+}
+
+.detail .detail-content {
+  top: 85vh;
 }
 </style>
