@@ -253,6 +253,7 @@ export default {
 
 .main.start .start-button::after {
   opacity: 0;
+  visibility: hidden;
 }
 
 .top-section.start .start-button {

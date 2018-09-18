@@ -29,8 +29,28 @@
       <div class="detail-button" v-on:click="detailButton()"></div>
       <div class="detail-content">
         <div class="widget">
-          <h3>アジャイル</h3>
-          <p>アジャイル開発手法の一つ、スケジュール、タスク、MTG日程を管理</p>
+          <div class="widget-item-wrapper" :style="{left: `-${this.step * 100}%`}">
+            <div class="widget-item">
+              <h3>Scrum</h3>
+              <div>
+                <h4>アジャイル開発手法の一つ</h4>
+                <p>- スケジュール管理</p>
+                <p>- タスク管理</p>
+                <p>- MTG日程管理</p>
+              </div>
+            </div>
+            <div class="widget-item">
+              <h3>User Story Mapping</h3>
+              <div>
+                <p>エンドユーザーのStoryを考え、サービスを考えていく手法</p>
+              </div>
+              <div class="image-list">
+                <my-image></my-image>
+              </div>
+            </div>
+          </div>
+          <div class="prev-button" v-on:click="prevButton" v-if="this.step !== 0"><p>prev</p></div>
+          <div class="next-button" v-on:click="nextButton"><p>next</p></div>
         </div>
       </div>
     </div>
@@ -51,11 +71,22 @@ export default {
   },
   data: () => ({
     viewDetail: false,
+    step: 0,
   }),
   props: ["view"],
   methods: {
     detailButton: function () {
       this.viewDetail = !this.viewDetail;
+    },
+    prevButton: function () {
+      if (this.step !== 0) {
+        this.step = this.step - 1;
+      }
+    },
+    nextButton: function () {
+      if (this.step !== 10) {
+        this.step = this.step + 1;
+      }
     },
   },
   watch: {
@@ -320,5 +351,114 @@ export default {
 
 .detail .detail-content {
   top: 85vh;
+}
+
+.widget {
+  background-color: #FAFBFD;
+  border-radius: 8px;
+  margin: 0 8rem;
+  height: 100%;
+  box-shadow: inset 0px 0px 11px 2px rgba(0,0,0,.6);
+  overflow: hidden;
+  display: flex;
+}
+
+.widget::after {
+  opacity: 0;
+}
+
+.detail .widget::after {
+  content: "使用技術 / ツール";
+  position: absolute;
+  top: -3.5rem;
+  right: 8.5rem;
+  font-size: 2rem;
+  color: white;
+  opacity: 1;
+  transition: all .3s ease-in-out;
+}
+
+.widget-item {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  min-height: 100%;
+  min-width: 100%;
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.widget-item p,
+.widget-item h3,
+.widget-item h4 {
+  margin: 0;
+}
+.widget-item h4 {
+  font-weight: normal;
+  font-size: 3rem;
+}
+.widget-item p {
+  font-size: 2rem;
+}
+
+.widget p {
+  text-align: left;
+}
+
+.widget .prev-button,
+.widget .next-button {
+  height: 100%;
+  width: 4rem;
+  position: absolute;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0,0,0,.1);
+  border-radius: 8px;
+  padding-top: 10rem;
+  box-sizing: border-box;
+  cursor: pointer;
+  margin: 0 2rem;
+}
+.widget .prev-button {
+  left: 0;
+}
+.widget .next-button {
+  right: 0;
+}
+
+.widget-item-wrapper {
+  transition: all 1s ease-in-out;
+  width: 100%;
+  position: relative;
+  display: flex;
+}
+
+.widget .prev-button > p,
+.widget .next-button > p {
+  color: white;
+  text-align: left;
+  font-size: 3rem;
+}
+.widget .prev-button > p {
+  transform: rotate(-90deg);
+  transform-origin: left top;
+  padding-top: .5rem;
+}
+.widget .next-button > p {
+  transform: rotate(90deg);
+  transform-origin: right top;
+  padding-top: 1rem;
+}
+
+.image-list {
+  display: flex;
+  justify-content: space-between;
+  align-self: center;
 }
 </style>
