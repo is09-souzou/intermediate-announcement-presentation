@@ -2,7 +2,7 @@
   <section
     class="service-top-section"
     :view="view"
-    :content="this.isViewConsept ? 'consept': this.isViewTarget ? 'target' : this.isViewGoal ? 'goal' : ''"
+    :content="this.isViewconcept ? 'concept': this.isViewTarget ? 'target' : this.isViewGoal ? 'goal' : ''"
   >
     <div class="animation-slash-list">
       <div
@@ -17,10 +17,10 @@
         <h1>{{ headline }}</h1>
       </font-cormorant>
     </div>
-    <div :view="this.isViewConsept" class="consept" v-on:click="viewConsept()">
+    <div :view="this.isViewconcept" class="concept" v-on:click="viewconcept()">
       <div class="icon"><star-outline-icon/></div>
       <div class="widget">
-        <font-cormorant><h2>Consept</h2></font-cormorant>
+        <font-cormorant><h2>concept</h2></font-cormorant>
         <div>
           <ul>
             <li>クリエイターの知名度に依存しない、作品の出会いの場を提供する。</li>
@@ -82,23 +82,23 @@ export default {
   props: ["view"],
   data: () => ({
     headline: "Service Introduction",
-    isViewConsept: false,
+    isViewconcept: false,
     isViewTarget: false,
     isViewGoal: false,
   }),
   methods: {
-    viewConsept: function () {
-      this.isViewConsept = !this.isViewConsept;
+    viewconcept: function () {
+      this.isViewconcept = !this.isViewconcept;
       this.isViewTarget = false;
       this.isViewGoal = false;
     },
     viewTarget: function () {
-      this.isViewConsept = false;
+      this.isViewconcept = false;
       this.isViewTarget = !this.isViewTarget;
       this.isViewGoal = false;
     },
     viewGoal: function () {
-      this.isViewConsept = false;
+      this.isViewconcept = false;
       this.isViewTarget = false;
       this.isViewGoal = !this.isViewGoal;
     },
@@ -245,7 +245,7 @@ export default {
   }
 }
 
-.consept,
+.concept,
 .target,
 .goal {
   position: absolute;
@@ -265,14 +265,14 @@ export default {
   min-height: 0;
 }
 
-.consept:hover,
+.concept:hover,
 .target:hover,
 .goal:hover {
   min-width: 40rem;
   min-height: 40rem;
 }
 
-.service-top-section[view] .consept,
+.service-top-section[view] .concept,
 .service-top-section[view] .target,
 .service-top-section[view] .goal {
   animation-duration        : .6s;
@@ -281,7 +281,7 @@ export default {
   animation-fill-mode       : forwards;
 }
 
-.service-top-section[view] .consept {
+.service-top-section[view] .concept {
   animation-delay: 5.7s;
 }
 .service-top-section[view] .target {
@@ -291,7 +291,7 @@ export default {
   animation-delay: 6.1s;
 }
 
-.consept[view],
+.concept[view],
 .target[view],
 .goal[view] {
   min-width: 100vw;
@@ -299,7 +299,7 @@ export default {
   border-radius: 2px;
 }
 
-.consept[view] {
+.concept[view] {
   left: 0;
   top: 0;
   background-color: #FF9100;
@@ -315,7 +315,7 @@ export default {
   background-color: #00B0FF;
 }
 
-.consept > .icon,
+.concept > .icon,
 .target > .icon,
 .goal > .icon {
   position: relative;
@@ -326,19 +326,19 @@ export default {
   transition: all .3s ease-in-out;
 }
 
-.consept[view] > .icon,
+.concept[view] > .icon,
 .target[view] > .icon,
 .goal[view] > .icon {
   opacity: 0;
 }
 
-.consept {
+.concept {
   left: -20rem;
   top: -20rem;
   background-color: #FFF3E0;
 }
 
-.consept > .icon {
+.concept > .icon {
   right: -7rem;
   bottom: -7rem;
 }
@@ -380,7 +380,7 @@ export default {
   color: white;
 }
 
-.consept[view] .widget,
+.concept[view] .widget,
 .target[view] .widget,
 .goal[view] .widget {
   display: flex;

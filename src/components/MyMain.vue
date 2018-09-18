@@ -28,7 +28,7 @@
     <service-top-section :view="this.step === 5 || this.step === 6"></service-top-section>
     <demo-section :view="this.step === 6 || this.step === 7"></demo-section>
     <develop-method-section :view="this.step === 7 || this.step === 8"></develop-method-section>
-    <develop-concept-section :view="this.step === 8 || this.step === 9"></develop-concept-section>
+    <develop-concept-section :view="this.step === 8 || this.step === 9" :end="this.step === 9"></develop-concept-section>
     <div class="prev-button" v-on:click="prev()"></div>
     <div class="next-button" v-on:click="next()"></div>
   </main>

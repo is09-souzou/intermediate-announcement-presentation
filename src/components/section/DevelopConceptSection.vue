@@ -1,5 +1,5 @@
 <template>
-  <section class="develop-concept-section" :view="view">
+  <section class="develop-concept-section" :view="view" :end="end">
     <div class="animation-slash-list">
       <div
         class="slash"
@@ -22,7 +22,7 @@
           <div></div>
         </li>
         <li class="AnimationWiden">
-          <div>3. チーム全員の成長</div>
+          <div>3. チームメンバーの成長</div>
           <div></div>
         </li>
       </ul>
@@ -52,21 +52,51 @@
             <div class="widget-item">
               <h3>Tools</h3>
               <div class="tool-list">
-                <div>
-                  <my-image class="image" :src="AsanaLogo"></my-image>
+                <div
+                  v-on:click="displayToolInfo('プロジェクト管理アプリケーション', AsanaSS)"
+                >
+                  <my-image
+                    class="image"
+                    :src="AsanaLogo"
+                  ></my-image>
                 </div>
-                <div>
-                  <my-image class="image" :src="GithubLogo"></my-image>
+                <div
+                  v-on:click="displayToolInfo('バージョン管理システム', GithubSS)"
+                >
+                  <my-image
+                    class="image"
+                    :src="GithubLogo"
+                  ></my-image>
                 </div>
-                <div>
-                  <my-image class="image" :src="GrowiLogo"></my-image>
+                <div
+                  v-on:click="displayToolInfo('Team Wikipedia', GrowiSS)"
+                >
+                  <my-image
+                    class="image"
+                    :src="GrowiLogo"
+                  ></my-image>
                 </div>
-                <div>
-                  <my-image class="image" :src="SlackLogo"></my-image>
+                <div
+                  v-on:click="displayToolInfo('チームコミュニケーションツール', SlackSS)"
+                >
+                  <my-image
+                    class="image"
+                    :src="SlackLogo"
+                  ></my-image>
                 </div>
-                <div>
-                  <my-image class="image" :src="TrelloLogo"></my-image>
+                <div
+                  v-on:click="displayToolInfo('かんばん式タスク管理ツール', TrelloSS)"
+                >
+                  <my-image
+                    class="image"
+                    :src="TrelloLogo"
+                  ></my-image>
                 </div>
+              </div>
+              <div class="info" v-if="this.viewToolInfo">
+                <my-image :src="this.toolImage"></my-image>
+                <div>{{ this.toolInfo }}</div>
+                <div v-on:click="hideToolInfo">CLOSE</div>
               </div>
             </div>
           </div>
@@ -90,6 +120,12 @@ import GrowiLogo from "@/assets/logo-growi.png";
 import SlackLogo from "@/assets/logo-slack.png";
 import TrelloLogo from "@/assets/logo-trello.png";
 
+import AsanaSS from "@/assets/ss-asana.png";
+import GithubSS from "@/assets/ss-github.png";
+import GrowiSS from "@/assets/ss-growi.png";
+import SlackSS from "@/assets/ss-slack.png";
+import TrelloSS from "@/assets/ss-trello.png";
+
 export default {
   name: "DevelopConcept",
   components: {
@@ -105,10 +141,18 @@ export default {
     GrowiLogo,
     SlackLogo,
     TrelloLogo,
+    AsanaSS,
+    GithubSS,
+    GrowiSS,
+    SlackSS,
+    TrelloSS,
     viewDetail: false,
     step: 0,
+    toolInfo: "",
+    viewToolInfo: false,
+    toolImage: undefined,
   }),
-  props: ["view"],
+  props: ["view", "end"],
   methods: {
     detailButton: function () {
       this.viewDetail = !this.viewDetail;
@@ -123,11 +167,20 @@ export default {
         this.step = this.step + 1;
       }
     },
+    displayToolInfo: function (info, img) {
+      this.toolInfo = info;
+      this.viewToolInfo = true;
+      this.toolImage = img;
+    },
+    hideToolInfo: function () {
+      this.viewToolInfo = false;
+    },
   },
   watch: {
     view: function (next, prev) {
       if (!prev && next) {
         this.viewDetail = false;
+        this.step = 0;
       }
     },
   },
@@ -241,6 +294,7 @@ export default {
   position: relative;
   overflow: hidden;
   background-color: transparent;
+  top: 0;
 }
 
 .AnimationWiden > :not(:last-child) {
@@ -262,6 +316,18 @@ export default {
   left: -195%;
   position: absolute;
   z-index: 2;
+}
+
+.AnimationWiden:nth-child(1) {
+  margin-left: 0rem;
+}
+
+.AnimationWiden:nth-child(2) {
+  margin-left: 5rem;
+}
+
+.AnimationWiden:nth-child(3) {
+  margin-left: 10rem;
 }
 
 .develop-concept-section[view] .AnimationWiden:nth-child(1) > :not(:last-child) {
@@ -297,20 +363,47 @@ export default {
   animation-fill-mode: forwards;
 }
 
+.develop-concept-section[end] .AnimationWiden:nth-child(1),
+.develop-concept-section[end] .AnimationWiden:nth-child(2),
+.develop-concept-section[end] .AnimationWiden:nth-child(3) {
+  transition: all .4s ease-in-out;
+  opacity: 0;
+  top: -1rem;
+}
+
+.develop-concept-section[end] .AnimationWiden:nth-child(1) {
+  transition-delay: 0s;
+}
+.develop-concept-section[end] .AnimationWiden:nth-child(2) {
+  transition-delay: .2s;
+}
+.develop-concept-section[end] .AnimationWiden:nth-child(3) {
+  transition-delay: .4s;
+}
+
 @keyframes visibility {
-  100% {
+  from {
+    visibility: hidden;
+  }
+  to {
     visibility: visible;
   }
 }
 
 @keyframes height {
-  100% {
+  from {
+    top: 100%;
+  }
+  to {
     top: 0%;
   }
 }
 
 @keyframes width {
-  100% {
+  from {
+    left: 0%;
+  }
+  to {
     left: 100%;
   }
 }
@@ -514,5 +607,44 @@ export default {
   border-radius: 50%;
   border: 1px solid #ccc;
   padding: 1.5rem;
+  cursor: pointer;
+  transition: all .3s ease-in-out;
+}
+
+.tool-list .image:hover {
+  background-color: rgba(0,0,0,.1);
+}
+
+.widget-item .info {
+  position: absolute;
+  background-color: #FAFBFD;
+  box-shadow: 1px 2px 5px 3px rgba(0,0,0,.3);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  overflow: auto;
+}
+
+.widget-item .info > :nth-child(1) {
+  width: 40rem;
+}
+.widget-item .info > :nth-child(2) {
+  font-size: 2rem;
+  margin-top: 1rem;
+}
+
+.widget-item .info > :nth-child(3) {
+  font-size: 1rem;
+  padding: .5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all .3s ease-in-out;
+  align-self: flex-end;
+  margin-right: 1rem;
+}
+
+.widget-item .info > :nth-child(3):hover {
+  background-color: rgba(0,0,0,.1);
 }
 </style>
