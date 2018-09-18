@@ -10,11 +10,14 @@
     </div>
     <div class="content">
       <font-cormorant>
-        <h1>1. 仕様変更に対し柔軟に対応</h1>
+        <h1>2. コミュニケーション重視</h1>
       </font-cormorant>
-      <div class="image-list">
-        <my-image :src="a"></my-image>
-      </div>
+      <ul class="info-list">
+        <li>User Story Mappingを用い常にサービス改善</li>
+        <li>slackで会話のグループ化および管理</li>
+        <li>朝、昼、夕に会議の実施</li>
+        <li>wiki導入によってDocument管理</li>
+      </ul>
     </div>
   </section>
 </template>
@@ -24,7 +27,7 @@ import MyImage from "@/components/MyImage";
 import FontCormorant from "@/components/font/FontCormorant";
 
 export default {
-  name: "DevelopDescriptionSection",
+  name: "DevelopDescriptionSection2",
   components: {
     MyImage,
     FontCormorant,
@@ -69,7 +72,7 @@ export default {
 }
 
 .slash {
-  background-color: #00E676;
+  background-color: #FF9100;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
   width: 0;
@@ -94,7 +97,7 @@ export default {
 
 .content h1 {
   color: white;
-  font-size: 5rem;
+  font-size: 4rem;
   text-align: left;
   margin: 0;
   margin-bottom: -2rem;
@@ -103,15 +106,6 @@ export default {
   position: relative;
   border-bottom: 1px solid #fff;
   line-height: 5rem;
-}
-
-.content p {
-  color: white;
-  display: block;
-  margin-top: 4rem;
-  opacity: 0;
-  bottom: .8rem;
-  position: relative;
 }
 
 .develop-description-section[view] .content h1 {
@@ -126,12 +120,57 @@ export default {
   animation-delay: 1s;
 }
 
+.info-list {
+  width: 100%;
+}
+
+.info-list li {
+  color: white;
+  margin: 0 0 0 1rem;
+  opacity: 0;
+  bottom: .8rem;
+  position: relative;
+  text-align: left;
+  font-size: 3.5rem;
+}
+
+.develop-description-section[view] li {
+  animation-duration: .8s;
+  animation-name: ViewText2;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+.develop-description-section[view] li:nth-child(1) {
+  animation-delay: 1.5s;
+}
+.develop-description-section[view] li:nth-child(2) {
+  animation-delay: 1.8s;
+}
+.develop-description-section[view] li:nth-child(3) {
+  animation-delay: 2.1s;
+}
+.develop-description-section[view] li:nth-child(4) {
+  animation-delay: 2.4s;
+}
+
 @keyframes SpreadSlash {
   from {
     width: 0;
   }
   to {
     width: 100%;
+  }
+}
+
+@keyframes ViewText2 {
+  from {
+    bottom: .8rem;
+    opacity: 0;
+  }
+  to {
+    bottom: 0;
+    opacity: 1;
   }
 }
 

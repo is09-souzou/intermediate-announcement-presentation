@@ -331,7 +331,7 @@ export default {
 }
 
 .develop-concept-section[view] .AnimationWiden:nth-child(1) > :not(:last-child) {
-  animation: 0s visibility 1.9s;
+  animation: 0s visibility 1.6s;
   animation-fill-mode: forwards;
 }
 
@@ -342,7 +342,7 @@ export default {
 }
 
 .develop-concept-section[view] .AnimationWiden:nth-child(2) > :not(:last-child) {
-  animation: 0s visibility 2.0s;
+  animation: 0s visibility 1.7s;
   animation-fill-mode: forwards;
 }
 
@@ -353,13 +353,13 @@ export default {
 }
 
 .develop-concept-section[view] .AnimationWiden:nth-child(3) > :not(:last-child) {
-  animation: 0s visibility 2.0s;
+  animation: 0s visibility 1.8s;
   animation-fill-mode: forwards;
 }
 
 .develop-concept-section[view] .AnimationWiden:nth-child(3) > :last-child {
-  animation: .4s height 1.2s ease-in-out,
-             .8s width 1.6s ease-in-out;
+  animation: .4s height 1.4s ease-in-out,
+             .8s width 1.8s ease-in-out;
   animation-fill-mode: forwards;
 }
 

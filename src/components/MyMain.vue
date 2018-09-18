@@ -29,7 +29,9 @@
     <demo-section :view="this.step === 6 || this.step === 7"></demo-section>
     <develop-method-section :view="this.step === 7 || this.step === 8"></develop-method-section>
     <develop-concept-section :view="this.step === 8 || this.step === 9" :end="this.step === 9"></develop-concept-section>
-    <develop-description-section :view="this.step === 9 || this.step === 10"></develop-description-section>
+    <develop-description-section1 :view="this.step === 9 || this.step === 10"></develop-description-section1>
+    <develop-description-section2 :view="this.step === 10 || this.step === 11"></develop-description-section2>
+    <develop-description-section3 :view="this.step === 11 || this.step === 12"></develop-description-section3>
     <div class="prev-button" v-on:click="prev()"></div>
     <div class="next-button" v-on:click="next()"></div>
   </main>
@@ -41,7 +43,9 @@ import FontCormorant from "@/components/font/FontCormorant";
 import FontNotoSerif from "@/components/font/FontNotoSerif";
 import DemoSection from "@/components/section/DemoSection";
 import DevelopConceptSection from "@/components/section/DevelopConceptSection";
-import DevelopDescriptionSection from "@/components/section/DevelopDescriptionSection";
+import DevelopDescriptionSection1 from "@/components/section/DevelopDescriptionSection1";
+import DevelopDescriptionSection2 from "@/components/section/DevelopDescriptionSection2";
+import DevelopDescriptionSection3 from "@/components/section/DevelopDescriptionSection3";
 import DevelopMethodSection from "@/components/section/DevelopMethodSection";
 import MemberSection from "@/components/section/MemberSection";
 import PresentatorSection from "@/components/section/PresentatorSection";
@@ -62,7 +66,9 @@ export default {
     FontNotoSerif,
     DemoSection,
     DevelopConceptSection,
-    DevelopDescriptionSection,
+    DevelopDescriptionSection1,
+    DevelopDescriptionSection2,
+    DevelopDescriptionSection3,
     DevelopMethodSection,
     MemberSection,
     PresentatorSection,
