@@ -12,7 +12,16 @@
       <font-cormorant>
         <h1>Sprint Chart</h1>
       </font-cormorant>
-      <sprint-chart />
+      <div class="chart-wrapper">
+        <div class="chart">
+          <line-chart
+            :chart-data="datacollection"
+            :height="500"
+            :width="800"
+            :options="{responsive: false, maintainAspectRatio: true}"
+          ></line-chart>
+        </div>
+      </div>
     </div>
   </section>
 </template>
@@ -20,16 +29,48 @@
 <script>
 import MyImage from "@/components/MyImage";
 import FontCormorant from "@/components/font/FontCormorant";
-import SprintChart from "@/components/chart/SprintChart";
+import LineChart from "@/components/chart/LineChart";
 
 export default {
   name: "TeamSection",
   components: {
     MyImage,
     FontCormorant,
-    SprintChart,
+    LineChart,
   },
   data: () => ({
+    datacollection: {
+      labels: ["Sprint 1", "Sprint 2", "Sprint 3", "Sprint 4"],
+      datasets: [
+        {
+          label: "Rate",
+          backgroundColor: "#FFFFFFAA",
+          borderColor: "#FC2525",
+          pointBackgroundColor: "white",
+          borderWidth: 1,
+          pointBorderColor: "white",
+          data: [21, 90, 26, 82, 90],
+        },
+        {
+          label: "Average",
+          borderColor: "#05CBE1",
+          pointBackgroundColor: "white",
+          pointBorderColor: "white",
+          borderWidth: 1,
+          backgroundColor: "#3D5AFEAA",
+          data: [45, 161, 34, 98, 47],
+        },
+        {
+          label: "Max",
+          borderColor: "#05CBE1",
+          pointBackgroundColor: "white",
+          pointBorderColor: "white",
+          borderWidth: 1,
+          backgroundColor: "#FF9100AA",
+          data: [210, 178, 130, 120, 52],
+        },
+      ],
+    },
   }),
   methods: {
   },
@@ -105,17 +146,15 @@ export default {
   line-height: 5rem;
 }
 
-.content > p {
+.content .chart {
   color: white;
-  display: block;
-  margin-top: 4rem;
   opacity: 0;
   bottom: .8rem;
   position: relative;
 }
 
 .team-section[view] .content h1,
-.team-section[view] .content p {
+.team-section[view] .content .chart {
   animation-delay: 1s;
   animation-duration: .4s;
   animation-name: ViewText2;
@@ -127,7 +166,7 @@ export default {
   animation-delay: 1s;
 }
 
-.team-section[view] .content p {
+.team-section[view] .content .chart {
   animation-delay: 1.4s;
 }
 
@@ -149,5 +188,22 @@ export default {
     bottom: 0;
     opacity: 1;
   }
+}
+
+.chart-wrapper {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  padding-top: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.chart {
+  background-color: #FAFBFD;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 1px 3px 6px 1px rgba(0,0,0,.3);
 }
 </style>

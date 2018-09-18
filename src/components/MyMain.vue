@@ -38,6 +38,8 @@
     <sprint-log-section3 :view="this.step === 15 || this.step === 16"></sprint-log-section3>
     <sprint-log-section4 :view="this.step === 16 || this.step === 17"></sprint-log-section4>
     <sprint-chart-section :view="this.step === 17 || this.step === 18"></sprint-chart-section>
+    <future-challenges-section :view="this.step === 18 || this.step === 19"></future-challenges-section>
+    <portal-technology-section :view="this.step === 19"></portal-technology-section>
     <div class="prev-button" v-on:click="prev()"></div>
     <div class="next-button" v-on:click="next()"></div>
   </main>
@@ -52,8 +54,10 @@ import DevelopConceptSection from "@/components/section/DevelopConceptSection";
 import DevelopDescriptionSection1 from "@/components/section/DevelopDescriptionSection1";
 import DevelopDescriptionSection2 from "@/components/section/DevelopDescriptionSection2";
 import DevelopDescriptionSection3 from "@/components/section/DevelopDescriptionSection3";
+import FutureChallengesSection from "@/components/section/FutureChallengesSection";
 import DevelopMethodSection from "@/components/section/DevelopMethodSection";
 import MemberSection from "@/components/section/MemberSection";
+import PortalTechnologySection from "@/components/section/PortalTechnologySection";
 import PresentatorSection from "@/components/section/PresentatorSection";
 import SprintChartSection from "@/components/section/SprintChartSection";
 import ServiceTopSection from "@/components/section/ServiceTopSection";
@@ -81,8 +85,10 @@ export default {
     DevelopDescriptionSection1,
     DevelopDescriptionSection2,
     DevelopDescriptionSection3,
+    FutureChallengesSection,
     DevelopMethodSection,
     MemberSection,
+    PortalTechnologySection,
     PresentatorSection,
     ServiceTopSection,
     SprintChartSection,
@@ -124,6 +130,17 @@ export default {
     },
   },
   mounted() {
+    document.addEventListener("keydown", (event) => {
+      if (event.keyCode === 37) {
+        console.log("Left was pressed");
+        this.prev();
+      } else if (event.shiftKey && event.keyCode === 39) {
+        this.step = this.step + 1;
+      } else if (event.keyCode === 39) {
+        console.log("Right was pressed");
+        this.next();
+      }
+    });
   },
   destroyed() {
   },
