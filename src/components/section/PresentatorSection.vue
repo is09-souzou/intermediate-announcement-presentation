@@ -14,7 +14,7 @@
       </div>
       <div class="info">
         <h1>Presentator</h1>
-        <div>Yuito Yamamoto</div>
+        <div>Okodo Shohei</div>
       </div>
     </div>
   </section>
@@ -22,7 +22,7 @@
 
 <script>
 import MyImage from "@/components/MyImage";
-import Avatar from "@/assets/yuito-avatar.png";
+import Avatar from "@/assets/bugfoot-avatar.png";
 
 export default {
   name: "PresentatorSection",

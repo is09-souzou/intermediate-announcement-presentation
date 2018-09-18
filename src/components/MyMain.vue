@@ -27,6 +27,8 @@
     <member-section :view="this.step === 4 || this.step === 5"></member-section>
     <service-top-section :view="this.step === 5 || this.step === 6"></service-top-section>
     <demo-section :view="this.step === 6 || this.step === 7"></demo-section>
+    <develop-method-section :view="this.step === 7 || this.step === 8"></develop-method-section>
+    <develop-concept-section :view="this.step === 8 || this.step === 9"></develop-concept-section>
     <div class="prev-button" v-on:click="prev()"></div>
     <div class="next-button" v-on:click="next()"></div>
   </main>
@@ -37,6 +39,8 @@ import MicrophoneOutlineIcon from "vue-material-design-icons/MicrophoneOutline";
 import FontCormorant from "@/components/font/FontCormorant";
 import FontNotoSerif from "@/components/font/FontNotoSerif";
 import DemoSection from "@/components/section/DemoSection";
+import DevelopConceptSection from "@/components/section/DevelopConceptSection";
+import DevelopMethodSection from "@/components/section/DevelopMethodSection";
 import MemberSection from "@/components/section/MemberSection";
 import PresentatorSection from "@/components/section/PresentatorSection";
 import ServiceTopSection from "@/components/section/ServiceTopSection";
@@ -55,6 +59,8 @@ export default {
     FontCormorant,
     FontNotoSerif,
     DemoSection,
+    DevelopConceptSection,
+    DevelopMethodSection,
     MemberSection,
     PresentatorSection,
     ServiceTopSection,

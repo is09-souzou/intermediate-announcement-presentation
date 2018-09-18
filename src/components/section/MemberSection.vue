@@ -64,7 +64,7 @@
 
 <script>
 import MyImage from "@/components/MyImage";
-import BugfootAvatar from "@/assets/bugfoot-avatar.jpeg";
+import BugfootAvatar from "@/assets/bugfoot-avatar.png";
 import HasumiAvatar from "@/assets/hasumi-avatar.png";
 import ItoAvatar from "@/assets/ito-avatar.png";
 import RenAvatar from "@/assets/ren-avatar.jpeg";
