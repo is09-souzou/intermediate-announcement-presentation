@@ -29,6 +29,7 @@
     <demo-section :view="this.step === 6 || this.step === 7"></demo-section>
     <develop-method-section :view="this.step === 7 || this.step === 8"></develop-method-section>
     <develop-concept-section :view="this.step === 8 || this.step === 9" :end="this.step === 9"></develop-concept-section>
+    <develop-description-section :view="this.step === 9 || this.step === 10"></develop-description-section>
     <div class="prev-button" v-on:click="prev()"></div>
     <div class="next-button" v-on:click="next()"></div>
   </main>
@@ -40,6 +41,7 @@ import FontCormorant from "@/components/font/FontCormorant";
 import FontNotoSerif from "@/components/font/FontNotoSerif";
 import DemoSection from "@/components/section/DemoSection";
 import DevelopConceptSection from "@/components/section/DevelopConceptSection";
+import DevelopDescriptionSection from "@/components/section/DevelopDescriptionSection";
 import DevelopMethodSection from "@/components/section/DevelopMethodSection";
 import MemberSection from "@/components/section/MemberSection";
 import PresentatorSection from "@/components/section/PresentatorSection";
@@ -60,6 +62,7 @@ export default {
     FontNotoSerif,
     DemoSection,
     DevelopConceptSection,
+    DevelopDescriptionSection,
     DevelopMethodSection,
     MemberSection,
     PresentatorSection,
