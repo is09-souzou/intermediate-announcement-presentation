@@ -252,8 +252,10 @@ export default {
 }
 
 .main.start .start-button::after {
-  opacity: 0;
-  visibility: hidden;
+  width: 0rem !important;
+  height: 0rem !important;
+  opacity: 0 !important;
+  animation-name: none !important;
 }
 
 .top-section.start .start-button {

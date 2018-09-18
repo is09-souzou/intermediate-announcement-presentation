@@ -45,12 +45,33 @@
                 <p>エンドユーザーのStoryを考え、サービスを考えていく手法</p>
               </div>
               <div class="image-list">
-                <my-image></my-image>
+                <my-image class="image" :src="USM1"></my-image>
+                <my-image class="image" :src="USM2"></my-image>
+              </div>
+            </div>
+            <div class="widget-item">
+              <h3>Tools</h3>
+              <div class="tool-list">
+                <div>
+                  <my-image class="image" :src="AsanaLogo"></my-image>
+                </div>
+                <div>
+                  <my-image class="image" :src="GithubLogo"></my-image>
+                </div>
+                <div>
+                  <my-image class="image" :src="GrowiLogo"></my-image>
+                </div>
+                <div>
+                  <my-image class="image" :src="SlackLogo"></my-image>
+                </div>
+                <div>
+                  <my-image class="image" :src="TrelloLogo"></my-image>
+                </div>
               </div>
             </div>
           </div>
           <div class="prev-button" v-on:click="prevButton" v-if="this.step !== 0"><p>prev</p></div>
-          <div class="next-button" v-on:click="nextButton"><p>next</p></div>
+          <div class="next-button" v-on:click="nextButton" v-if="this.step !== 2"><p>next</p></div>
         </div>
       </div>
     </div>
@@ -61,6 +82,13 @@
 import MyImage from "@/components/MyImage";
 import FontCormorant from "@/components/font/FontCormorant";
 import FontNotoSerif from "@/components/font/FontNotoSerif";
+import USM1 from "@/assets/usm1.jpg";
+import USM2 from "@/assets/usm2.jpg";
+import AsanaLogo from "@/assets/logo-asana.svg";
+import GithubLogo from "@/assets/logo-github.png";
+import GrowiLogo from "@/assets/logo-growi.png";
+import SlackLogo from "@/assets/logo-slack.png";
+import TrelloLogo from "@/assets/logo-trello.png";
 
 export default {
   name: "DevelopConcept",
@@ -70,6 +98,13 @@ export default {
     FontNotoSerif,
   },
   data: () => ({
+    USM1,
+    USM2,
+    AsanaLogo,
+    GithubLogo,
+    GrowiLogo,
+    SlackLogo,
+    TrelloLogo,
     viewDetail: false,
     step: 0,
   }),
@@ -84,7 +119,7 @@ export default {
       }
     },
     nextButton: function () {
-      if (this.step !== 10) {
+      if (this.step !== 2) {
         this.step = this.step + 1;
       }
     },
@@ -433,7 +468,7 @@ export default {
 }
 
 .widget-item-wrapper {
-  transition: all 1s ease-in-out;
+  transition: all .8s ease-in-out;
   width: 100%;
   position: relative;
   display: flex;
@@ -460,5 +495,24 @@ export default {
   display: flex;
   justify-content: space-between;
   align-self: center;
+  margin-top: 2rem;
+}
+
+.image-list > .image {
+  width: 25rem;
+  margin: 0 1rem;
+}
+
+.tool-list {
+  display: flex;
+}
+
+.tool-list .image {
+  width: 8rem;
+  height: 8rem;
+  margin: 1rem;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+  padding: 1.5rem;
 }
 </style>
