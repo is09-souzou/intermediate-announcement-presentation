@@ -37,6 +37,7 @@
     <sprint-log-section2 :view="this.step === 14 || this.step === 15"></sprint-log-section2>
     <sprint-log-section3 :view="this.step === 15 || this.step === 16"></sprint-log-section3>
     <sprint-log-section4 :view="this.step === 16 || this.step === 17"></sprint-log-section4>
+    <sprint-chart-section :view="this.step === 17 || this.step === 18"></sprint-chart-section>
     <div class="prev-button" v-on:click="prev()"></div>
     <div class="next-button" v-on:click="next()"></div>
   </main>
@@ -54,6 +55,7 @@ import DevelopDescriptionSection3 from "@/components/section/DevelopDescriptionS
 import DevelopMethodSection from "@/components/section/DevelopMethodSection";
 import MemberSection from "@/components/section/MemberSection";
 import PresentatorSection from "@/components/section/PresentatorSection";
+import SprintChartSection from "@/components/section/SprintChartSection";
 import ServiceTopSection from "@/components/section/ServiceTopSection";
 import SprintLogSection1 from "@/components/section/SprintLogSection1";
 import SprintLogSection2 from "@/components/section/SprintLogSection2";
@@ -83,6 +85,7 @@ export default {
     MemberSection,
     PresentatorSection,
     ServiceTopSection,
+    SprintChartSection,
     SprintLogSection1,
     SprintLogSection2,
     SprintLogSection3,
@@ -146,6 +149,10 @@ export default {
   background-color: #FFC400;
   background-color: #FF9100;
   background-color: #FF3D00;
+
+  background-color: #FF9100;
+  background-color: #3D5AFE;
+  background-color: #00E676;
 }
 
 .main {
