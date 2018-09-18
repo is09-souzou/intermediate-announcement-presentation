@@ -32,6 +32,11 @@
     <develop-description-section1 :view="this.step === 9 || this.step === 10"></develop-description-section1>
     <develop-description-section2 :view="this.step === 10 || this.step === 11"></develop-description-section2>
     <develop-description-section3 :view="this.step === 11 || this.step === 12"></develop-description-section3>
+    <sprint-recode-section :view="this.step === 12 || this.step === 13"></sprint-recode-section>
+    <sprint-log-section1 :view="this.step === 13 || this.step === 14"></sprint-log-section1>
+    <sprint-log-section2 :view="this.step === 14 || this.step === 15"></sprint-log-section2>
+    <sprint-log-section3 :view="this.step === 15 || this.step === 16"></sprint-log-section3>
+    <sprint-log-section4 :view="this.step === 16 || this.step === 17"></sprint-log-section4>
     <div class="prev-button" v-on:click="prev()"></div>
     <div class="next-button" v-on:click="next()"></div>
   </main>
@@ -50,6 +55,11 @@ import DevelopMethodSection from "@/components/section/DevelopMethodSection";
 import MemberSection from "@/components/section/MemberSection";
 import PresentatorSection from "@/components/section/PresentatorSection";
 import ServiceTopSection from "@/components/section/ServiceTopSection";
+import SprintLogSection1 from "@/components/section/SprintLogSection1";
+import SprintLogSection2 from "@/components/section/SprintLogSection2";
+import SprintLogSection3 from "@/components/section/SprintLogSection3";
+import SprintLogSection4 from "@/components/section/SprintLogSection4";
+import SprintRecodeSection from "@/components/section/SprintRecodeSection";
 import TeamSection from "@/components/section/TeamSection";
 
 export default {
@@ -73,6 +83,11 @@ export default {
     MemberSection,
     PresentatorSection,
     ServiceTopSection,
+    SprintLogSection1,
+    SprintLogSection2,
+    SprintLogSection3,
+    SprintLogSection4,
+    SprintRecodeSection,
     TeamSection,
   },
   methods: {
