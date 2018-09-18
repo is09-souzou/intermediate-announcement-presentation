@@ -47,13 +47,8 @@
         <font-cormorant><h2>Goal</h2></font-cormorant>
         <div>
           <ul>
-            <li>好きなことで生きていく！ (subscribers 1,000,000+)</li>
-            <li>I will live by my favorite things</li>
-            <li>作品(彼氏)と生活する。</li>
-            <li>「進捗、どうですか？」</li>
-            <li>笑顔になる＾＾</li>
-            <li>自分を武器に</li>
-            <li>↑ 考えて！！！！！！！！ ごめん！</li>
+            <li>好きなことで生きていく！</li>
+            <li>活躍の場を手に入れる（仕事にありつく）</li>
           </ul>
         </div>
       </div>
